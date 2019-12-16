@@ -1,0 +1,37 @@
+1.role类型
+mongodb role类型
+数据库用户角色（Database User Roles）：
+
+read：授予User只读数据的权限
+readWrite：授予User读写数据的权限
+数据库管理角色（Database Administration Roles）：
+
+dbAdmin：在当前dB中执行管理操作
+dbOwner：在当前DB中执行任意操作
+userAdmin：在当前DB中管理User
+备份和还原角色（Backup and Restoration Roles）：
+
+backup
+restore
+跨库角色（All-Database Roles）：
+
+readAnyDatabase：授予在所有数据库上读取数据的权限
+readWriteAnyDatabase：授予在所有数据库上读写数据的权限
+userAdminAnyDatabase：授予在所有数据库上管理User的权限
+dbAdminAnyDatabase：授予管理所有数据库的权限
+集群管理角色（Cluster Administration Roles）：
+
+clusterAdmin：授予管理集群的最高权限
+clusterManager：授予管理和监控集群的权限，A user with this role can access the config and local databases, which are used in sharding and replication, respectively.
+clusterMonitor：授予监控集群的权限，对监控工具具有readonly的权限
+hostManager：管理Server
+
+2.创建用户：db.createUser({user:'账号', pwd:'密码', roles:[{role:'Role属性', db:'指定数据库'}]});
+
+mongo中需要登录admin用户创建用户，mongo中角色权限划分与其他数据库不同，可直接连接使用，但是新建用户并分配权限需要登录admin用户操作
+
+3.创建数据库后先使用admin创建管理新数据库权限用户再使用对应权限用户操作数据库
+
+4.两种插入文档的方式，创建变量然后直接insert，或者直接insert
+5.db.auth('','')链接用户
+6.创建集合db.createCollection("mycol", { capped : true, autoIndexId : true, size : 6142800, max : 10000 } )
