@@ -33,5 +33,17 @@ mongoÖĞĞèÒªµÇÂ¼adminÓÃ»§´´½¨ÓÃ»§£¬mongoÖĞ½ÇÉ«È¨ÏŞ»®·ÖÓëÆäËûÊı¾İ¿â²»Í¬£¬¿ÉÖ±½ÓÁ¬½
 3.´´½¨Êı¾İ¿âºóÏÈÊ¹ÓÃadmin´´½¨¹ÜÀíĞÂÊı¾İ¿âÈ¨ÏŞÓÃ»§ÔÙÊ¹ÓÃ¶ÔÓ¦È¨ÏŞÓÃ»§²Ù×÷Êı¾İ¿â
 
 4.Á½ÖÖ²åÈëÎÄµµµÄ·½Ê½£¬´´½¨±äÁ¿È»ºóÖ±½Óinsert£¬»òÕßÖ±½Óinsert
+
 5.db.auth('','')Á´½ÓÓÃ»§
-6.´´½¨¼¯ºÏdb.createCollection("mycol", { capped : true, autoIndexId : true, size : 6142800, max : 10000 } )
+
+6.´´½¨¼¯ºÏdb.createCollection("¼¯ºÏÃû³Æ", { capped : ÊÇ·ñ¹Ì¶¨´óĞ¡, autoIndexId : ÊÇ·ñ´´½¨_idË÷Òı, size : ¼¯ºÏ×î´óÖµµ¥Î»kb, max : ÎÄµµ×î´óÊıÁ¿ } )
+
+7.¹Ì¶¨¼¯ºÏÖ»ÄÜĞÂÔö-É¾³ıÎÄ¼ş£¬ÎŞ·¨update
+
+8.´´½¨·Ç¹Ì¶¨¼¯ºÏdb.creatCollection("¼¯ºÏÃû³Æ",{capped:false})
+
+9.db.XX.update({"":""},{$unset:{"":""}}) $unset£¬×Ö¶Î²»´æÔÚ²»×öÈÎºÎ´¦Àí
+
+10.db.XX.update({"":""}, {$setOnInsert:{"":""}},{upsert:true}) ×Ö¶Î²»´æÔÚÊ±ĞÂ½¨ÎÄ¼ş£¬£¨setOnInsert³£ÓëupsertÍ¬Ê±Ê¹ÓÃ(upsertÊ¹ÓÃÎÊÌâ£ºÓÉÓÚÏÈ½øĞĞ²éÕÒ²Ù×÷£¬¼ÓÔØË÷Òı£¬ÔÚÊı¾İÁ¿½Ï´óÊ±Ê¹ÓÃinsert)£©
+
+11.É¾³ıÎÄ¼ş£¬db.xx.deleteMany()»òÕßdb.xx.deleteOne()
